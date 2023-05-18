@@ -10,7 +10,7 @@ export default function Navbar(user) {
     await auth.signOut();
   };
 
-  const [showMobileSeacrh, setShowMobileSeacrh] = useState(false);
+  const [showMobileSearch, setShowMobileSearch] = useState(false);
 
   const [showSearch, setShowSearch] = useState(true);
   useEffect(() => {
@@ -42,7 +42,7 @@ export default function Navbar(user) {
     console.log(queryRef.current.value);
     navigate("/search");
     setDepArrSearch(!depArrSearch);
-    setShowMobileSeacrh(false);
+    setShowMobileSearch(false);
   };
 
   document.body.className = bgMode ? "bg-[#17171E]" : "bg-white";
@@ -107,7 +107,7 @@ export default function Navbar(user) {
         } nvs:rounded-[0px] nvs:border-none nvs:fixed nvs:top-0 nvs:left-0 nvs:z-[999999] nvs:h-[62px] nvs:flex nvs:verflow-hidden nvs:backdrop-blur-[20px] ${
           bgMode ? " nvs:text-white" : ""
         } nvs:justify-between ${showSearch ? "" : " nvs:hidden"} ${
-          showMobileSeacrh ? " nvs:w-full" : " nvs:w-0"
+          showMobileSearch ? " nvs:w-full" : " nvs:w-0"
         } nvs:transition-all
 `}
         onSubmit={handleSubmit}
@@ -131,7 +131,7 @@ export default function Navbar(user) {
         <button
           type='button'
           className='hidden w-[64px] nvs:block'
-          onClick={() => setShowMobileSeacrh(false)}
+          onClick={() => setShowMobileSearch(false)}
         >
           <i
             className={`fa-solid fa-caret-left px-[15px] py-[12px] w-full text-[22px] ${
@@ -143,7 +143,7 @@ export default function Navbar(user) {
       <button
         type='button'
         className='w-[64px] hidden nvs:block'
-        onClick={() => setShowMobileSeacrh(true)}
+        onClick={() => setShowMobileSearch(true)}
       >
         <i
           className={`fa-solid fa-magnifying-glass px-[15px] py-[12px] w-full text-[18px] ${
