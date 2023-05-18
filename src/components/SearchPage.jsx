@@ -31,7 +31,6 @@ function SearchPage() {
       const response = await axios.request(options);
       const myData = await response.data;
       setLoader(false);
-      console.log(myData);
       const video = myData.data.map((item, index) => {
         if (item.type === "channel") {
           ("");

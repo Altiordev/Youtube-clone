@@ -27,7 +27,6 @@ export default function Main() {
       setLoader(true);
       const response = await axios.request(options);
       const myData = await response.data;
-      console.log(myData);
       setLoader(false);
       const video = myData.data.map((item, index) => {
         return (
