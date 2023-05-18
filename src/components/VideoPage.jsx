@@ -158,7 +158,7 @@ export default function VideoPage() {
     <main
       className={`${
         bgMode ? "bg-[#17171E]" : "bg-white"
-      } h-fit w-full pt-[84px] relative left-0 nvs:pt-[76px] px-4 pb-4 kpx:px-0 md:pb-[100px] videoPage`}
+      } h-fit w-full pt-[84px] relative left-0 nvs:pt-[76px] px-4 pb-4 kpx:px-0 md:pb-[101px] videoPage`}
     >
       <div
         className={`${
@@ -254,7 +254,7 @@ export default function VideoPage() {
                 onClick={() => setSubs(!subs)}
                 className={`w-[125px] h-[40px] rounded-[20px] cursor-pointer ${
                   subs ? "bg-gray-500" : "bg-red-600"
-                } text-white text-center text-[16px] mins:w-fit mins:bg-transparent  ${
+                } text-white text-center text-[16px] mins:w-fit mins:bg-transparent ${
                   subs ? "mins:text-gray-500" : "mins:text-red-500"
                 }`}
               >
