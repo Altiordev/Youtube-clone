@@ -5,15 +5,15 @@ import { Link } from "react-router-dom";
 import firebase from "./firebase";
 
 const Register = () => {
-  const { bgMode, setShowAside } = useContext(CtxProvider);
-  const [showPassword, setShowPassvord] = useState(false);
+  const { bgMode, setShowAside, setLoader } = useContext(CtxProvider);
+  const [showPassword, setShowPassword] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleShowPassword = () => setShowPassvord(!showPassword);
+  const handleShowPassword = () => setShowPassword(!showPassword);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,10 +29,13 @@ const Register = () => {
     }
 
     try {
+      setLoader(true);
       await firebase.auth().createUserWithEmailAndPassword(email, password);
+      setLoader(false);
       localStorage.setItem("userName", JSON.stringify({ name: name }));
     } catch (error) {
       console.error(error);
+      setLoader(false);
     }
 
     setShowAside(false);

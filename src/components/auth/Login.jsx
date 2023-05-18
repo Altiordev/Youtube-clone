@@ -5,13 +5,13 @@ import { Link } from "react-router-dom";
 import firebase from "./firebase";
 
 const Login = () => {
-  const { bgMode, setShowAside } = useContext(CtxProvider);
-  const [showPassword, setShowPassvord] = useState(false);
+  const { bgMode, setShowAside, setLoader } = useContext(CtxProvider);
+  const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleShowPassword = () => setShowPassvord(!showPassword);
+  const handleShowPassword = () => setShowPassword(!showPassword);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -21,15 +21,20 @@ const Login = () => {
     }
 
     try {
+      setLoader(true);
       await firebase.auth().signInWithEmailAndPassword(email, password);
+      setLoader(false);
       console.log("successfully logged!!!");
     } catch (error) {
       if (error.code === "auth/user-not-found") {
         setError("User not found");
+        setLoader(false);
       } else if (error.code === "auth/wrong-password") {
         setError("Password is incorrect");
+        setLoader(false);
       } else {
         console.log(error.message);
+        setLoader(false);
       }
     }
     setShowAside(false);
