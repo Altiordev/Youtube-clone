@@ -252,9 +252,9 @@ export default function VideoPage() {
               </div>
               <button
                 onClick={() => setSubs(!subs)}
-                className={`w-[125px] h-[40px] rounded-[20px] cursor-pointer bg-red-600  ${
+                className={`w-[125px] h-[40px] rounded-[20px] cursor-pointer ${
                   subs ? "bg-gray-500" : "bg-red-600"
-                } text-white text-center text-[16px] mins:w-fit mins:bg-transparent mins:text-red-500  ${
+                } text-white text-center text-[16px] mins:w-fit mins:bg-transparent  ${
                   subs ? "mins:text-gray-500" : "mins:text-red-500"
                 }`}
               >
