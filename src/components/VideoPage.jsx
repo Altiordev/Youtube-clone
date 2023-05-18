@@ -10,6 +10,7 @@ export default function VideoPage() {
   const { bgMode, showAside, setShowAside, setLoader } =
     useContext(CtxProvider);
   const [videos, setVideos] = useState(null);
+  const [subs, setSubs] = useState(false);
 
   const options = {
     method: "GET",
@@ -157,7 +158,7 @@ export default function VideoPage() {
     <main
       className={`${
         bgMode ? "bg-[#17171E]" : "bg-white"
-      } h-fit w-full pt-[84px] relative left-0 nvs:pt-[76px] px-4 pb-4 kpx:px-0 mins:pb-[61px] videoPage`}
+      } h-fit w-full pt-[84px] relative left-0 nvs:pt-[76px] px-4 pb-4 kpx:px-0 md:pb-[100px] videoPage`}
     >
       <div
         className={`${
@@ -184,12 +185,12 @@ export default function VideoPage() {
               <h3
                 className={`mb-5 text-[36px] ${
                   bgMode ? "text-white" : "text-black"
-                } font-semibold md:text-center`}
+                } font-semibold md:text-center sm:text-[24px]`}
               >
                 {title}
               </h3>
               <div
-                className={`flex justify-between items-center mins:flex-col mins:gap-2`}
+                className={`flex justify-between items-center mins:flex-col mins:gap-2 nvs:flex-col nvs:gap-3`}
               >
                 <span
                   className={`flex items-center gap-2 text-[20px]  ${
@@ -238,21 +239,26 @@ export default function VideoPage() {
                 >
                   <i className='fa-solid fa-user text-[36px] opacity-50'></i>
                 </div>
-                <div className={`hab:flex hab:items-center`}>
+                <div className={`hab:flex md:flex-col hab:items-center`}>
                   <h2
                     className={`text-[24px] ${
                       bgMode ? "text-white" : "text-black"
-                    } font-medium mr-2`}
+                    } font-medium mr-2 md:text-[18px]`}
                   >
                     {userName}
                   </h2>
-                  <span className={`hab:hidden`}>{time}</span>
+                  <span className={`md:text-[14px]`}>{time}</span>
                 </div>
               </div>
               <button
-                className={`w-[125px] h-[40px] rounded-[20px] cursor-pointer bg-red-600 text-white text-center text-[16px] mins:w-fit mins:bg-transparent mins:text-red-500`}
+                onClick={() => setSubs(!subs)}
+                className={`w-[125px] h-[40px] rounded-[20px] cursor-pointer bg-red-600  ${
+                  subs ? "bg-gray-500" : "bg-red-600"
+                } text-white text-center text-[16px] mins:w-fit mins:bg-transparent mins:text-red-500  ${
+                  subs ? "mins:text-gray-500" : "mins:text-red-500"
+                }`}
               >
-                Subscribe
+                {subs ? "Subscribed" : "Subscribe"}
               </button>
             </div>
           </article>
